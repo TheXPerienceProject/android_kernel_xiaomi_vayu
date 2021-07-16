@@ -76,9 +76,6 @@ static void wmi_log_history(struct notifier_block *block, void *data,
 		pos = *wmi_log->p_buf_tail_idx - 1;
 
 	while (nread--) {
-		if (wmi_hang_data->offset + total_len > QDF_WLAN_HANG_FW_OFFSET)
-			return;
-
 		switch (wmi_history) {
 		case WMI_EVT_HIST:
 			wmi_buf_ptr = (wmi_hang_data->hang_data +
