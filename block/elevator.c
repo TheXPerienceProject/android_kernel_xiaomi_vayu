@@ -234,6 +234,9 @@ int elevator_init(struct request_queue *q, char *name)
 		 * isn't available OR we have multiple queues, default
 		 * to "none".
 		 */
+
+	        if (q->tag_set && q->tag_set->flags & BLK_MQ_F_NO_SCHED_BY_DEFAULT)
+        		return NULL;
 		if (q->mq_ops) {
 			if (q->nr_hw_queues == 1)
 				e = elevator_get(q, "mq-deadline", false);
