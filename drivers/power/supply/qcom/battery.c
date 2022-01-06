@@ -214,7 +214,7 @@ static int get_adapter_icl_based_ilim(struct pl_data *chip)
 	if (chip->charger_type != POWER_SUPPLY_TYPE_USB_HVDCP_3 &&
 		chip->charger_type != POWER_SUPPLY_TYPE_USB_HVDCP_3P5 &&
 		pval.intval != POWER_SUPPLY_PD_PPS_ACTIVE)
-		return final_icl;
+		return final_icl = get_effective_result_locked(chip->usb_icl_votable);
 
 	/*
 	 * For HVDCP3/HVDCP_3P5 adapters, limit max. ILIM as:
